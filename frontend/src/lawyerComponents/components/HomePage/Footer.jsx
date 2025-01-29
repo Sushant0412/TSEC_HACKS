@@ -82,7 +82,7 @@ const Footer = ({ id }) => {
           {/* Copyright Notice */}
           <div>
             <p className="text-gray-400 text-sm">
-              &copy; 2024 BailBridgers. All rights reserved.
+              &copy; 2025 Nyaya Saathi. All rights reserved.
             </p>
           </div>
         </div>
