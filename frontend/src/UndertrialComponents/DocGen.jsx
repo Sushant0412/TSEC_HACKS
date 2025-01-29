@@ -65,11 +65,24 @@ const DocGen = () => {
     try {
       const response = await axios.post(
         "http://192.168.32.251:3001/pdf/generate",
-        requestData
+        requestData,
+        { responseType: "blob" } // Ensure the response is handled as a Blob
       );
-      if (response.data.status_code === 200) {
+
+      if (response.status === 200) {
+        // Create a download link for the PDF
+        const pdfBlob = response.data;
+        const pdfUrl = URL.createObjectURL(pdfBlob); // Create a URL for the Blob
+
         setPdfGenerated(true);
-        setPdfUrl(response.data.file_url); // Assuming the API returns a file URL
+        setPdfUrl(pdfUrl); // Store the URL of the PDF Blob
+
+        // Optionally, trigger the download automatically
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "BailApplication.pdf";
+        link.click();
+
         alert("PDF Generated Successfully!");
       } else {
         alert("Error generating PDF.");
