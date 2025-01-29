@@ -6,7 +6,8 @@ import time
 import os
 from google.api_core.exceptions import ResourceExhausted
 from dotenv import load_dotenv
-import os
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
 
 load_dotenv()
 
@@ -21,12 +22,13 @@ with open('Offences.json') as offenses_file:
     offenses_data = json.load(offenses_file)
 
 # Secure API Key Handling
-#genai.configure(api_key="AIzaSyC8QVswiobSY_zFhch2Gn346tsWa4LWPeg")
-#API_KEY = os.getenv("AIzaSyC8QVswiobSY_zFhch2Gn346tsWa4LWPeg")  # Load from environment variable
-#
-
-genai.configure(api_key="AIzaSyD8SBOM2_y1Ibj2z_9WJuRcy554g-ubE9s")  # Use the secure API key
+genai.configure(api_key=os.getenv("AIzaSyD8SBOM2_y1Ibj2z_9WJuRcy554g-ubE9s"))  # Use the secure API key
 model = genai.GenerativeModel("gemini-pro")
+
+# BERT Model and Tokenizer
+bert_tokenizer = AutoTokenizer.from_pretrained("AryanKKate/legal-bert-model")
+bert_model = AutoModelForSequenceClassification.from_pretrained("AryanKKate/legal-bert-model")
+
 
 @app.route('/query', methods=['POST'])
 def get_query():
@@ -34,6 +36,7 @@ def get_query():
     query = data.get('query')
     prompt = f"You are now an AI bot integrated into a law website. Answer the following question as an Indian Lawyer: {query}"
 
+    # Retry mechanism for Google Generative AI model
     max_retries = 3
     retries = 0
     while retries < max_retries:
@@ -49,6 +52,7 @@ def get_query():
 
     print("Failed to get a response after multiple retries.")
     return jsonify({"data": "Could not find anything for your case"}), 429  # HTTP 429: Too Many Requests
+
 
 @app.route('/get_info', methods=['POST'])
 def get_info():
@@ -85,5 +89,55 @@ def get_info():
 
     return jsonify({"data": results})
 
+
+@app.route('/bert_predict', methods=['POST'])
+def bert_predict():
+    data = request.json
+    text = data.get('text')
+
+    if not text:
+        return jsonify({"error": "No text provided"}), 400
+
+    # Tokenize and predict with BERT
+    inputs = bert_tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+
+    with torch.no_grad():
+        outputs = bert_model(**inputs)
+        logits = outputs.logits
+
+    probabilities = torch.nn.functional.softmax(logits, dim=-1)
+    predicted_class = torch.argmax(probabilities, dim=-1).item()
+
+    # Assuming you have two classes: "Legally Risky" and "Not Legally Risky"
+    classification = "Legally Risky" if predicted_class == 1 else "Legally Safe"
+
+    # Provide suggestions if it's "Legally Risky"
+    suggestions = []
+    if classification == "Legally Risky":
+        suggestions = generate_suggestions(text)
+
+    return jsonify({
+        "prediction": classification,
+        "confidence": probabilities.tolist(),
+        "suggestions": suggestions
+    })
+
+def generate_suggestions(text):
+    # Example logic for generating suggestions if text is risky
+    # Here, we are just creating generic suggestions. You can refine this with more domain-specific suggestions.
+    suggestions = []
+
+    if "automatically renew" in text.lower():
+        suggestions.append("Consider adding a clause allowing either party to review the agreement before renewal.")
+
+    if "six months" in text.lower():
+        suggestions.append("Make sure the 6-month notice period is reasonable and aligns with the industry standard.")
+
+    # You can expand this list based on more patterns or use additional models for suggestion generation.
+    return suggestions
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
