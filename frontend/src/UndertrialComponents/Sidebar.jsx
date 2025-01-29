@@ -60,11 +60,11 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       <div className="p-4 text-2xl font-bold text-left">
         Undertrial Dashboard
       </div>
-      <ul className="mt-6 space-y-4">
+      <ul className="mt-2 space-y-4">
         {items.map((item) => (
           <li
             key={item.value}
-            className={`cursor-pointer px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-white hover:text-[#03346E] ${
+            className={`cursor-pointer px-4 m-3 py-[7px]  rounded-lg transition-colors duration-300 hover:bg-white hover:text-[#03346E] ${
               activeComponent === item.value
                 ? "bg-white text-[#03346E] font-semibold"
                 : ""
