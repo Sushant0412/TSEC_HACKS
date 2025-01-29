@@ -218,3 +218,112 @@ const CaseDetailModal = ({ caseItem, onClose }) => {
       },
     },
   };
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-7xl relative h-[90%] max-h-[90%] overflow-y-auto">
+        <button
+          className="absolute top-4 right-4 text-gray-500 hover:text-[#1E40AF] text-2xl"
+          onClick={onClose}
+        >
+          &times;
+        </button>
+        <h2 className="text-3xl font-bold mb-6">{caseItem.caseId}-{caseItem.title}</h2>
+
+        <div className="flex flex-wrap justify-between gap-x-5">
+        {familyBackground && <div className="mb-6 min-w-[230px] flex-grow bg-blue-50 rounded-lg p-2 pl-4  shadow-md shadow-gray-500 border-black border-2">
+          <h4 className="text-xl font-semibold mb-2 text-[#1E40AF]">Family Background:</h4>
+          <p className="text-[#1E40AF]">
+            <span className="font-bold mr-1">
+              
+              Father: 
+              </span>
+              {familyBackground.father_name}
+          </p>
+          <p className="text-[#1E40AF]">
+            <span className="font-bold mr-1">
+              
+              Mother: 
+              </span>
+              {familyBackground.mother_name}
+          </p>
+          <p className="text-[#1E40AF]">
+            <span className="font-bold mr-1">
+              
+              Marital Status: 
+              </span>
+              {familyBackground.marital_status}
+          </p>
+          <p className="text-[#1E40AF]">
+            <span className="font-bold mr-1">
+              
+              Children:
+
+              </span>
+          </p>
+          {
+            familyBackground.children.map(child=><p className="text-[#1E40AF]">{child.name}</p>)
+          }
+          <p className="text-[#1E40AF]">
+            <span className="font-bold mr-1">
+              
+              Siblings:
+
+              </span>
+          </p>
+          {
+            familyBackground.siblings.map(sibling=><p className="text-[#1E40AF]">{sibling.name}</p>)
+          }
+        </div>}
+        <div className="mb-6 min-w-[200px] flex-grow bg-blue-50 p-2 pl-4 rounded-lg text-[#1E40AF]  shadow-md shadow-gray-500 border-black border-2">
+        {pastRecords &&<h4 className="text-xl font-semibold mb-2">Past Records:</h4>}
+              
+          {pastRecords && pastRecords.map((record, index)=><div className="pb-2">
+            <h1 className="font-bold">Case {index+1}</h1>
+            <p className="font-bold text-[#1E40AF]"> Acts subjected:</p>
+            <ol className=" list-decimal pl-5">
+              {record.acts_subjected.map(act=><li>{act}</li>)}
+            </ol>
+          <p className="text-[#1E40AF]"><span className="font-bold mr-1">Court Name:</span>{record.court_name}</p>
+          <p className="text-[#1E40AF]"><span className="font-bold mr-1">Status:</span>{record.status}</p>
+          {record.sentence_duration!="N/A" && <p className="text-[#1E40AF]"><span className="font-bold mr-1">Sentence Duration:</span>{record.sentence_duration}</p>}
+          </div>)}
+        </div>
+        <div className="mb-6 flex-grow min-w-[200px] flex flex-col gap-y-2 bg-blue-50 p-2 pl-4 rounded-lg  shadow-md shadow-gray-500 border-black border-2">
+          <h4 className="text-xl font-semibold mb-2 text-[#1E40AF]">Case Details:</h4>
+          <ul>
+            <div className="flex justify-between pr-12 ">
+              <div className=" flex gap-1">
+              <p className="text-[#1E40AF] font-bold">Court: </p><span className="text-[#1E40AF]"> {caseItem.courtName}</span> 
+              </div>
+              <div className=" flex gap-1">
+              <p className="text-[#1E40AF] font-bold">Date Filed: </p><span className="text-[#1E40AF]"> {caseItem.dateFiled.substring(0,10) }</span>
+              </div>
+              <div className=" flex gap-1">
+              <p className="text-[#1E40AF] font-bold">Status: </p><span className="text-[#1E40AF]"> {caseItem.status }</span> 
+              </div>
+            </div>
+            <p className="text-[#1E40AF] font-bold">Description: <span className="font-normal">{caseItem.description}</span></p>
+            <p className="text-[#1E40AF] font-bold">Hearing Dates:</p>
+            <ul className="list-disc pl-5">
+              {
+                caseItem.hearingDates.reverse().map(date=><li>
+                  <p className=" text-[#1E40AF]">{date.date.substring(0,10)}</p>
+                </li>)
+              }
+            </ul>
+            <p className="text-[#1E40AF] font-bold">Comments:</p>
+            <ul className="list-disc pl-5">
+              {
+                caseItem.comments.reverse().map(comment=><li>
+                  <p className=" text-[#1E40AF]"><span>{comment.commentDate.substring(0,10)}:</span> {comment.commentText}</p>
+                </li>)
+              }
+            </ul>
+            <p className="text-[#1E40AF] font-bold">Legal Provisions:</p>
+            <ul className="list-disc pl-5">
+              {
+                caseItem.legalProvisions.map(provision=><li>
+                  <p className=" text-[#1E40AF]"><span className="font-semibold">{provision.provisionName}:</span> {provision.description}</p>
+                </li>)
+              }
+            </ul>
