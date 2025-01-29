@@ -1,0 +1,6 @@
+1. A contract must have a lawful object as per Section 23 of the Indian Contract Act, 1872.
+2. All agreements without consideration are void, as per Section 25 of the Indian Contract Act, 1872.
+3. A contract must have free consent, as per Section 14 of the Indian Contract Act, 1872.
+4. An agreement in restraint of trade is void, as per Section 27 of the Indian Contract Act, 1872.
+5. A minor cannot enter into a contract, as per Section 11 of the Indian Contract Act, 1872.
+6. Agreements based on fraud, misrepresentation, coercion, or undue influence are voidable, as per Sections 17, 18, 15, and 16 respectively.
