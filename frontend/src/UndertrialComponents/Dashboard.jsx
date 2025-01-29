@@ -19,6 +19,8 @@ import axios from "axios";
 import BailBuddy from "./BailBuddy";
 import ChooseNgo from "../Pages/ChooseANgo";
 import ValidateDocument from "./ValidateDocument";
+import DocGen from "./DocGen";
+
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("BailEligibility");
   const [showProfile, setShowProfile] = useState(false); // State for profile visibility
@@ -72,6 +74,8 @@ const Dashboard = () => {
         return <NotificationCenter />;
       case "Documents":
         return <DocumentUpload />;
+      case "DocGen":
+        return <DocGen />;
       case "LegalResources":
         return <LegalResources />;
       case "PrisonerFaceRecognition":

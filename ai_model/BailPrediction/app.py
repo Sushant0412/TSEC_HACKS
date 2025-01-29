@@ -14,7 +14,7 @@ import subprocess
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="http://localhost:5173")
 
 # File upload settings
 UPLOAD_FOLDER = "uploads"
@@ -33,7 +33,7 @@ with open("Offences.json") as offenses_file:
     offenses_data = json.load(offenses_file)
 
 # Secure API Key Handling
-genai.configure(api_key=os.getenv("AIzaSyD8SBOM2_y1Ibj2z_9WJuRcy554g-ubE9s"))
+genai.configure(api_key = "AIzaSyD8SBOM2_y1Ibj2z_9WJuRcy554g-ubE9s")
 model = genai.GenerativeModel("gemini-pro")
 
 # BERT Model and Tokenizer
@@ -230,7 +230,7 @@ def validate_document():
                 ["python", "compare_laws.py"], capture_output=True, text=True
             )
 
-            #Print the standard output and error for compare_text.py
+            # Print the standard output and error for compare_text.py
             print(f"compare_text.py stdout: {result_compare_text.stdout}")
             print(f"compare_text.py stderr: {result_compare_text.stderr}")
 
