@@ -16,4 +16,5 @@ router.post("/signup", UsersController.visitorSignupService);
 router.post("/createJudge", UsersController.createJudge);
 router.post("/createLawyer", UsersController.createLawyer);
 router.post("/createUtp", UsersController.createUtp);
+router.post("/legal-news" , UsersController.getLegalNewsController)
 export default router;
