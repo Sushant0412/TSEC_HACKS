@@ -1,0 +1,8 @@
+pytesseract
+python-docx
+pymupdf
+requests
+pdfplumber
+python-docx
+google-api-python-client  # If Gemini uses Google API Python Client
+requests
