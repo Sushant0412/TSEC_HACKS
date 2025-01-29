@@ -83,3 +83,12 @@ urllib3==1.26.6
 Werkzeug==3.0.1
 wheel==0.43.0
 wrapt==1.16.0
+pytesseract
+python-docx
+pymupdf
+requests
+pdfplumber
+python-docx
+google-api-python-client  # If Gemini uses Google API Python Client
+requests
+pytorch
