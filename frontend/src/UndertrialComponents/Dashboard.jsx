@@ -19,7 +19,7 @@ import axios from "axios";
 import BailBuddy from "./BailBuddy";
 import ChooseNgo from "../Pages/ChooseANgo";
 import ValidateDocument from "./ValidateDocument";
-import DocGen from "../Pages/DocGen"
+import DocGen from "./DocGen";
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("BailEligibility");
@@ -74,7 +74,7 @@ const Dashboard = () => {
         return <NotificationCenter />;
       case "Documents":
         return <DocumentUpload />;
-      case "DpcGen":
+      case "DocGen":
         return <DocGen />;
       case "LegalResources":
         return <LegalResources />;
