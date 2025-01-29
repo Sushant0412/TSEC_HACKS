@@ -14,7 +14,8 @@ import subprocess
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:5000"])  # if your frontend is running on port 3000
+
 
 # File upload settings
 UPLOAD_FOLDER = "uploads"

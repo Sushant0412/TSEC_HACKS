@@ -92,3 +92,5 @@ python-docx
 google-api-python-client  # If Gemini uses Google API Python Client
 requests
 pytorch
+PyMuPDF
+pdf2image
