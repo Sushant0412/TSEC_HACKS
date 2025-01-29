@@ -35,10 +35,8 @@ const ProfileBox = ({ showProfile, onProfileClick, onCloseProfile }) => {
       )}
 
       {/* Welcome Box (below Profile Box) */}
-      <div className="text-center p-2 mt-4">
-        <h1 className="text-2xl font-bold text-left">
-          Welcome to Your Dashboard
-        </h1>
+      <div className="bg-white ml-3 shadow-lg border rounded-lg p-4 mt-4">
+        <h1 className="text-2xl font-bold">Welcome to Your Dashboard</h1>
       </div>
     </>
   );

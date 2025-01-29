@@ -13,13 +13,18 @@ import {
 
 const Sidebar = ({ handleNavigation, activeComponent }) => {
   const items = [
-    {
-      label: "Bail Eligibility",
-      value: "BailEligibility",
-      icon: <FaFileContract />,
-    },
+    // {
+    //   label: "Bail Eligibility",
+    //   value: "BailEligibility",
+    //   icon: <FaFileContract />,
+    // },
     { label: "Case Details", value: "CaseDetails", icon: <FaFileAlt /> },
-    { label: "Document Generation", value: "DocGen", icon: <FaFileAlt /> },
+    { label: "BailBuddy", value: "BailBuddy", icon: <FaUserTie /> },
+    {
+      label: "Legal Document Assessment",
+      value: "DocGen",
+      icon: <FaFileAlt />,
+    },
     {
       label: "Document Validation",
       value: "Document Validation",
@@ -36,11 +41,11 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       value: "ApplicationAssistance",
       icon: <FaHandHoldingUsd />,
     },
-    {
-      label: "Notification Center",
-      value: "NotificationCenter",
-      icon: <FaBell />,
-    },
+    // {
+    //   label: "Notification Center",
+    //   value: "NotificationCenter",
+    //   icon: <FaBell />,
+    // },
     { label: "Documents", value: "Documents", icon: <FaFolder /> },
     { label: "Choose Lawyer", value: "ChooseLawyer", icon: <FaUserTie /> },
     { label: "Choose Ngo", value: "ChooseNgo", icon: <FaUserTie /> },
@@ -49,7 +54,6 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       value: "PrisonerFaceRecognition",
       icon: <FaUserTie />,
     },
-    { label: "BailBuddy", value: "BailBuddy", icon: <FaUserTie /> },
   ];
 
   return (

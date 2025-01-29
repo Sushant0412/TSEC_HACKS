@@ -138,7 +138,7 @@ const CourtAppearances = () => {
               className="bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
             >
               <div className="p-6">
-                <h2 className="text-2xl font-bold mb-4 text-gray-900 flex items-center">
+                <h2 className="text-2xl font-bold mb-4 text-blue-600 flex items-center">
                   <FaCalendarAlt className="mr-3 text-primary" />
                   {appearance.case}
                 </h2>
