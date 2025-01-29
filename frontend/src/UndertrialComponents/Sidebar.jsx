@@ -19,6 +19,16 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       icon: <FaFileContract />,
     },
     { label: "Case Details", value: "CaseDetails", icon: <FaFileAlt /> },
+    {
+      label: "Document Validation",
+      value: "Document Validation",
+      icon: <FaUserTie />,
+    },
+    {
+      label: "Clause Assessment",
+      value: "Clause Assessment",
+      icon: <FaUserTie />,
+    },
     { label: "Bail Options", value: "BailOptions", icon: <FaMoneyBill /> },
     {
       label: "Application Assistance",

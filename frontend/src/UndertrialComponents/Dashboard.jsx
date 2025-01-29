@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ApplicationAssistance from "../Pages/ApplicationAss";
 import BailEligibility from "../Pages/BailEligibilty";
 import BailOptions from "../Pages/BailOptions";
+import ClauseValidate from "./ClauseValidate";
 import CaseDetails from "../Pages/CaseDetails";
 import ChooseLawyer from "../Pages/ChooseALwyer";
 import LegalResources from "../Pages/LegalResources";
@@ -17,28 +18,29 @@ import LegalQuery from "../Pages/LegalQuery";
 import axios from "axios";
 import BailBuddy from "./BailBuddy";
 import ChooseNgo from "../Pages/ChooseANgo";
+import ValidateDocument from "./ValidateDocument";
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("BailEligibility");
   const [showProfile, setShowProfile] = useState(false); // State for profile visibility
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  if (!token) navigate("/");
-  useEffect(() => {
-    const verify = async () => {
-      const response = await axios.post(
-        `http://127.0.0.1:3000/prisoner/verifyToken`,
-        {
-          credentials: true,
-        }
-      );
-      console.log(response);
-      if (response.data.err) {
-        localStorage.removeItem("token");
-        navigate("/");
-      }
-    };
-    verify();
-  });
+  // if (!token) navigate("/");
+  // useEffect(() => {
+  //   const verify = async () => {
+  //     const response = await axios.post(
+  //       `http://127.0.0.1:3000/prisoner/verifyToken`,
+  //       {
+  //         credentials: true,
+  //       }
+  //     );
+  //     console.log(response);
+  //     if (response.data.err) {
+  //       localStorage.removeItem("token");
+  //       navigate("/");
+  //     }
+  //   };
+  //   verify();
+  // });
   const handleProfileClick = () => {
     setShowProfile(true);
   };
@@ -58,6 +60,10 @@ const Dashboard = () => {
         return <BailEligibility />;
       case "CaseDetails":
         return <CaseDetails />;
+      case "Document Validation":
+        return <ValidateDocument />;
+      case "Clause Assessment":
+        return <ClauseValidate />;
       case "BailOptions":
         return <BailOptions />;
       case "ApplicationAssistance":
