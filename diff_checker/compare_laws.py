@@ -26,8 +26,7 @@ def send_to_gemini(ocr_text, laws_text):
         }
 
         # Construct the prompt for the request
-        prompt = f"This is the bailing text: {ocr_text}\nThis is the laws: {laws_text}\n check for violations and summarize in 500 words the violations if it mostly/largely looks good just say All laws followed and say nothing else just say All Laws followed don;t give summary or conclusion."
-
+        prompt = f"This is the bailing text: {ocr_text}\nThis is the laws: {laws_text}\n check for violations and if any found summarize in less than 200 words as small as possible. Or if none just say that - The doc abides by the laws"
         # Send request to Gemini API
         data = {"contents": [{"parts": [{"text": prompt}]}]}
 
