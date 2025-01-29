@@ -66,7 +66,7 @@ const CaseDetail = () => {
           </p>
           <ul className="pl-5">
             {caseDetail.hearingDates.map((date) => (
-              <li className="text-[#1E40AF] text-lg  list-disc p">
+              <li key={date} className="text-[#1E40AF] text-lg  list-disc p">
                 {date.date.substr(0, 10)}
               </li>
             ))}

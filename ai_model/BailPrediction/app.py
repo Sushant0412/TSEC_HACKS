@@ -16,6 +16,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:5000"])  # if your frontend is running on port 3000
 
+CORS(app, origins="http://localhost:5173")
 
 # File upload settings
 UPLOAD_FOLDER = "uploads"
@@ -34,7 +35,7 @@ with open("Offences.json") as offenses_file:
     offenses_data = json.load(offenses_file)
 
 # Secure API Key Handling
-genai.configure(api_key=os.getenv("AIzaSyD8SBOM2_y1Ibj2z_9WJuRcy554g-ubE9s"))
+genai.configure(api_key="AIzaSyD8SBOM2_y1Ibj2z_9WJuRcy554g-ubE9s")
 model = genai.GenerativeModel("gemini-pro")
 
 # BERT Model and Tokenizer
@@ -125,39 +126,12 @@ def get_info():
     return jsonify({"data": results})
 
 
-@app.route("/bert_predict", methods=["POST"])
-def bert_predict():
-    data = request.json
-    text = data.get("text")
+# Define allowed file extensions for the upload
+ALLOWED_EXTENSIONS = {"pdf", "docx"}
 
-    if not text:
-        return jsonify({"error": "No text provided"}), 400
 
-    # Tokenize and predict with BERT
-    inputs = bert_tokenizer(text, return_tensors="pt", truncation=True, padding=True)
-
-    with torch.no_grad():
-        outputs = bert_model(**inputs)
-        logits = outputs.logits
-
-    probabilities = torch.nn.functional.softmax(logits, dim=-1)
-    predicted_class = torch.argmax(probabilities, dim=-1).item()
-
-    # Assuming you have two classes: "Legally Risky" and "Not Legally Risky"
-    classification = "Legally Risky" if predicted_class == 1 else "Legally Safe"
-
-    # Provide suggestions if it's "Legally Risky"
-    suggestions = []
-    if classification == "Legally Risky":
-        suggestions = generate_suggestions(text)
-
-    return jsonify(
-        {
-            "prediction": classification,
-            "confidence": probabilities.tolist(),
-            "suggestions": suggestions,
-        }
-    )
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 def generate_suggestions(text):
@@ -179,12 +153,103 @@ def generate_suggestions(text):
     return suggestions
 
 
+import os
+import shutil
+import subprocess
+import torch
+# from flask import Flask, request, jsonify
+# from werkzeug.utils import secure_filename
+
+app = Flask(__name__)
+
 # Define allowed file extensions for the upload
 ALLOWED_EXTENSIONS = {"pdf", "docx"}
 
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def clear_documents_folder():
+    documents_dir = "./documents"
+    if os.path.exists(documents_dir):
+        shutil.rmtree(documents_dir)  # Remove the entire folder
+    os.makedirs(documents_dir)  # Recreate an empty folder
+
+
+@app.route("/bert_predict", methods=["POST"])
+def bert_predict():
+    if "file" not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files["file"]
+
+    if file.filename == "":
+        return jsonify({"error": "No selected file"}), 400
+
+    if file and allowed_file(file.filename):
+        # Clear the documents folder before saving the new file
+        clear_documents_folder()
+
+        # Secure the filename and save the file
+        filename = secure_filename(file.filename)
+        file_path = os.path.join("./documents", filename)
+        file.save(file_path)
+
+        try:
+            print("Processing file with OCR model...")
+            result = subprocess.run(
+                ["python", "ocr_model.py"],
+                capture_output=True,
+                text=True,
+            )
+
+            print(f"OCR model stdout: {result.stdout}")
+            print(f"OCR model stderr: {result.stderr}")
+
+            if result.returncode != 0:
+                return jsonify({"error": "Error processing document"}), 500
+
+            output_file_path = "./output/doc_comparison.txt"
+
+            if not os.path.exists(output_file_path):
+                return jsonify({"error": "Output file not found"}), 500
+
+            with open(output_file_path, "r", encoding="utf-8") as f:
+                text = f.read().strip()
+
+            if not text:
+                return jsonify({"error": "No text extracted from document"}), 400
+
+            inputs = bert_tokenizer(
+                text, return_tensors="pt", truncation=True, padding=True
+            )
+
+            with torch.no_grad():
+                outputs = bert_model(**inputs)
+                logits = outputs.logits
+
+            probabilities = torch.nn.functional.softmax(logits, dim=-1)
+            predicted_class = torch.argmax(probabilities, dim=-1).item()
+
+            classification = "Legally Risky" if predicted_class == 1 else "Legally Safe"
+
+            suggestions = []
+            if classification == "Legally Risky":
+                suggestions = generate_suggestions(text)
+
+            return jsonify(
+                {
+                    "prediction": classification,
+                    "confidence": probabilities.tolist(),
+                    "suggestions": suggestions,
+                }
+            )
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    return jsonify({"error": "Invalid file format"}), 400
 
 
 @app.route("/validate", methods=["POST"])
@@ -198,17 +263,15 @@ def validate_document():
         return jsonify({"error": "No selected file"}), 400
 
     if file and allowed_file(file.filename):
+        # Clear the documents folder before saving the new file
+        clear_documents_folder()
+
         # Secure the filename and save the file
         filename = secure_filename(file.filename)
-        documents_dir = "./documents"
-        if not os.path.exists(documents_dir):
-            os.makedirs(documents_dir)
-
-        file_path = os.path.join(documents_dir, filename)
+        file_path = os.path.join("./documents", filename)
         file.save(file_path)
 
         try:
-            # Run ocr_model.py as a subprocess to process the uploaded file and generate doc_comparison.txt
             print(f"Processing file: {file_path}")
             result = subprocess.run(
                 ["python", "ocr_model.py"],
@@ -216,30 +279,23 @@ def validate_document():
                 text=True,
             )
 
-            # Print the standard output and error for debugging purposes
             print(f"OCR model stdout: {result.stdout}")
             print(f"OCR model stderr: {result.stderr}")
 
             if result.returncode != 0:
-                print(f"OCR processing failed with error: {result.stderr}")
                 return jsonify({"error": "Error processing document"}), 500
 
-            # # Now call compare_text.py to process the extracted OCR text and generate violations_report.txt
-            print("OCR Done")
-            print("Comparing document text with laws...")
+            print("OCR Done. Comparing document text with laws...")
             result_compare_text = subprocess.run(
                 ["python", "compare_laws.py"], capture_output=True, text=True
             )
 
-            #Print the standard output and error for compare_text.py
             print(f"compare_text.py stdout: {result_compare_text.stdout}")
             print(f"compare_text.py stderr: {result_compare_text.stderr}")
 
             if result_compare_text.returncode != 0:
-                print(f"Comparison failed with error: {result_compare_text.stderr}")
                 return jsonify({"error": "Error comparing document with laws"}), 500
 
-            # Read the generated violations_report.txt content
             output_file_path = "output/violations_report.txt"
             if not os.path.exists(output_file_path):
                 return jsonify({"error": "No violations report generated"}), 500
@@ -253,10 +309,8 @@ def validate_document():
                     "violations_report": violations_report,
                 }
             )
-            return ""
 
         except Exception as e:
-            print(f"Error processing document: {e}")
             return jsonify({"error": str(e)}), 500
 
     return jsonify({"error": "Invalid file format"}), 400

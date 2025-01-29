@@ -7,13 +7,13 @@ const Sidebar = () => {
       style={{ backgroundColor: "#03346E" }}
       className="w-64 h-screen text-white lg:fixed lg:top-0 lg:left-0 lg:h-screen z-50"
     >
-      <div className="p-2 text-2xl font-bold">Lawyer Dashboard</div>
+      <div className="p-2 text-2xl font-bold ml-3 ">Lawyer Dashboard</div>
       <ul className="mt-6 space-y-4">
         <li>
           <NavLink
             to="notifications"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center text-lg px-4 py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -27,7 +27,7 @@ const Sidebar = () => {
           <NavLink
             to="clients"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center text-lg px-4 py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -41,7 +41,7 @@ const Sidebar = () => {
           <NavLink
             to="client-documents"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center text-lg px-4 py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -55,7 +55,7 @@ const Sidebar = () => {
           <NavLink
             to="client-meetings"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center px-4 text-lg py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -69,7 +69,7 @@ const Sidebar = () => {
           <NavLink
             to="document-upload"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center px-4 text-lg py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -83,7 +83,7 @@ const Sidebar = () => {
           <NavLink
             to="court-appearances"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center px-4 text-lg py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -97,7 +97,7 @@ const Sidebar = () => {
           <NavLink
             to="precedents-used"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center text-lg px-4 py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -111,7 +111,7 @@ const Sidebar = () => {
           <NavLink
             to="cases"
             className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+              `flex justify-center text-lg px-4 py-2 rounded-lg transition-colors duration-300 ${
                 isActive
                   ? "bg-white text-[#03346E] font-semibold"
                   : "hover:bg-white hover:text-[#03346E]"
@@ -122,7 +122,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li
-          className={`block px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-white hover:text-[#03346E] font-semibold`}
+          className={`flex justify-center text-lg px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-white hover:text-[#03346E] font-semibold`}
         >
           Logout
         </li>

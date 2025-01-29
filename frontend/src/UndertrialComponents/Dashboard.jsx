@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApplicationAssistance from "../Pages/ApplicationAss";
-import BailEligibility from "../Pages/BailEligibilty";
+//import BailEligibility from "../Pages/BailEligibilty";
 import BailOptions from "../Pages/BailOptions";
 import ClauseValidate from "./ClauseValidate";
 import CaseDetails from "../Pages/CaseDetails";
@@ -19,6 +19,9 @@ import axios from "axios";
 import BailBuddy from "./BailBuddy";
 import ChooseNgo from "../Pages/ChooseANgo";
 import ValidateDocument from "./ValidateDocument";
+import DocGen from "./DocGen";
+import BailEligibility from "../Pages/BailEligibilty";
+
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("BailEligibility");
   const [showProfile, setShowProfile] = useState(false); // State for profile visibility
@@ -56,8 +59,8 @@ const Dashboard = () => {
 
   const renderComponent = () => {
     switch (activeComponent) {
-      case "BailEligibility":
-        return <BailEligibility />;
+      // case "BailEligibility":
+      //   return <BailEligibility />;
       case "CaseDetails":
         return <CaseDetails />;
       case "Document Validation":
@@ -72,6 +75,8 @@ const Dashboard = () => {
         return <NotificationCenter />;
       case "Documents":
         return <DocumentUpload />;
+      case "DocGen":
+        return <DocGen />;
       case "LegalResources":
         return <LegalResources />;
       case "PrisonerFaceRecognition":
@@ -83,9 +88,9 @@ const Dashboard = () => {
       case "LegalQuery":
         return <LegalQuery />;
       case "BailBuddy":
-        return <BailBuddy />;
-      default:
         return <BailEligibility />;
+      default:
+        return <CaseDetails />;
     }
   };
 

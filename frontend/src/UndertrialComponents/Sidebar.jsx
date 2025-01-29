@@ -13,12 +13,18 @@ import {
 
 const Sidebar = ({ handleNavigation, activeComponent }) => {
   const items = [
-    {
-      label: "Bail Eligibility",
-      value: "BailEligibility",
-      icon: <FaFileContract />,
-    },
+    // {
+    //   label: "Bail Eligibility",
+    //   value: "BailEligibility",
+    //   icon: <FaFileContract />,
+    // },
     { label: "Case Details", value: "CaseDetails", icon: <FaFileAlt /> },
+    { label: "BailBuddy", value: "BailBuddy", icon: <FaUserTie /> },
+    {
+      label: "Legal Document Assessment",
+      value: "DocGen",
+      icon: <FaFileAlt />,
+    },
     {
       label: "Document Validation",
       value: "Document Validation",
@@ -35,11 +41,11 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       value: "ApplicationAssistance",
       icon: <FaHandHoldingUsd />,
     },
-    {
-      label: "Notification Center",
-      value: "NotificationCenter",
-      icon: <FaBell />,
-    },
+    // {
+    //   label: "Notification Center",
+    //   value: "NotificationCenter",
+    //   icon: <FaBell />,
+    // },
     { label: "Documents", value: "Documents", icon: <FaFolder /> },
     { label: "Choose Lawyer", value: "ChooseLawyer", icon: <FaUserTie /> },
     { label: "Choose Ngo", value: "ChooseNgo", icon: <FaUserTie /> },
@@ -48,7 +54,6 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       value: "PrisonerFaceRecognition",
       icon: <FaUserTie />,
     },
-    { label: "BailBuddy", value: "BailBuddy", icon: <FaUserTie /> },
   ];
 
   return (
@@ -59,11 +64,11 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       <div className="p-4 text-2xl font-bold text-left">
         Undertrial Dashboard
       </div>
-      <ul className="mt-6 space-y-4">
+      <ul className="mt-2 space-y-4">
         {items.map((item) => (
           <li
             key={item.value}
-            className={`cursor-pointer px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-white hover:text-[#03346E] ${
+            className={`cursor-pointer px-4 m-3 py-[7px]  rounded-lg transition-colors duration-300 hover:bg-white hover:text-[#03346E] ${
               activeComponent === item.value
                 ? "bg-white text-[#03346E] font-semibold"
                 : ""

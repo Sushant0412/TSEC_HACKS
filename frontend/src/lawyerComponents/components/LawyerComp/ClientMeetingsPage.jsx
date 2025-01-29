@@ -2,39 +2,48 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const ClientMeetings = () => {
-  const [meetings, setMeetings] = useState([]);
-
-  useEffect(() => {
-    const fetchClients = async () => {
-      const lawyerId = localStorage.getItem("lawyerId");
-
-      if (!lawyerId) {
-        console.error("Lawyer ID not found");
-        return; // Exit if no lawyer ID
-      }
-
-      try {
-        const response = await axios.post(
-          "http://localhost:3000/lawyer/getAllMeetings",
-          { lawyerId },
-          {
-            withCredentials: true,
-          }
-        );
-        if (
-          response.data.status_code === 200 &&
-          Array.isArray(response.data.data)
-        ) {
-          setMeetings(response.data.data);
-        } else {
-          console.error("Unexpected data format:", response.data);
-        }
-      } catch (error) {
-        console.error("Error fetching clients:", error);
-      }
-    };
-    fetchClients();
-  }, []);
+  const [meetings, setMeetings] = useState([
+    {
+      id: 1,
+      client: "John Doe",
+      meetingDate: "2025-01-30T10:00:00",
+      location: "Law Office 1",
+      purpose: "Consultation",
+      status: "Scheduled",
+    },
+    {
+      id: 2,
+      client: "Jane Smith",
+      meetingDate: "2025-02-01T14:00:00",
+      location: "Law Office 2",
+      purpose: "Legal Advice",
+      status: "Confirmed",
+    },
+    {
+      id: 3,
+      client: "James Brown",
+      meetingDate: "2025-02-05T11:30:00",
+      location: "Law Office 3",
+      purpose: "Case Review",
+      status: "Scheduled",
+    },
+    {
+      id: 4,
+      client: "Mary Johnson",
+      meetingDate: "2025-02-10T09:00:00",
+      location: "Law Office 4",
+      purpose: "Contract Signing",
+      status: "Cancelled",
+    },
+    {
+      id: 5,
+      client: "Michael Davis",
+      meetingDate: "2025-02-12T16:00:00",
+      location: "Law Office 5",
+      purpose: "Family Law Consultation",
+      status: "Scheduled",
+    },
+  ]);
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -50,8 +59,6 @@ const ClientMeetings = () => {
       )
     );
   };
-
-  console.log(meetings);
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -72,9 +79,6 @@ const ClientMeetings = () => {
                 <span className="font-medium text-gray-800">Date: </span>
                 {formatDate(meeting.meetingDate)}
               </div>
-              {/* <div className="text-gray-700 mb-2 text-left">
-                <span className="font-medium text-gray-800">Time:</span> {meeting.time}
-              </div> */}
               <div className="text-gray-700 mb-2 text-left">
                 <span className="font-medium text-gray-800">Location:</span>{" "}
                 {meeting.location}
@@ -83,9 +87,6 @@ const ClientMeetings = () => {
                 <span className="font-medium text-gray-800">Purpose:</span>{" "}
                 {meeting.purpose}
               </div>
-              {/*   <div className="text-gray-700 mb-2 text-left">
-                <span className="font-medium text-gray-800">Description:</span> {meeting.notes}
-              </div> */}
               <div
                 className={`text-gray-700 mb-4 text-xl font-medium text-left ${
                   meeting.status === "Scheduled"
