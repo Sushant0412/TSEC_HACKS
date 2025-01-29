@@ -120,7 +120,7 @@ function ValidateDocument() {
           className="w-full p-4 bg-gray-100 border-2 border-gray-300 rounded-lg"
           style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
         >
-          {apiOutput || "API response will appear here"}
+          {apiOutput || "The response will be generated here."}
         </pre>
       </div>
     </div>
