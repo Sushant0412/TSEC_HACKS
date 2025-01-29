@@ -2,9 +2,9 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Dashboard from "./UndertrialComponents/Dashboard";
-import LawyerDashboard from "./lawerComponents/components/Pages/LawyerDashboard.jsx";
-import Home from "./lawerComponents/components/Pages/Home.jsx";
-import JudgeDashboard from "./lawerComponents/components/Pages/JudgeDashboard.jsx";
+import LawyerDashboard from "./lawyerComponents/components/Pages/LawyerDashboard.jsx";
+import Home from "./lawyerComponents/components/Pages/Home.jsx";
+import JudgeDashboard from "./lawyerComponents/components/Pages/JudgeDashboard.jsx";
 
 const App = () => {
   return (

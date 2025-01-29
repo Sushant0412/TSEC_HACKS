@@ -6,7 +6,7 @@ import ClientsPage from "../LawyerComp/ClientsPage";
 import ClientDocumentsPage from "../LawyerComp/ClientDocumentsPage";
 import ClientMeetingsPage from "../LawyerComp/ClientMeetingsPage";
 import DocumentUploadPage from "../LawyerComp/DocumentUploadPage";
-import CourtAppearancesPage from "../LawyerComp/CourtAppearancesPage";
+import CourtAppearancesPage from "../LawyerComp/CourtApperancesPage";
 import ProfileBox from "../LawyerComp/ProfileBox";
 import PrecedentsUsedPage from "../LawyerComp/Precedents"; // Import new component
 import CasesPage from "../LawyerComp/Cases"; // Import new component

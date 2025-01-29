@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ngo from "../../public/data/ngo.json"; // Adjust the path if the JSON file is located elsewhere
+import ngo from "/data/ngo.json?url"; // Adjust the path if the JSON file is located elsewhere
 import { assets } from "../assets/assets.js";
 const ChooseNgo = () => {
   const [searchTerm, setSearchTerm] = useState("");

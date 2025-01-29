@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DocumentDetailModal from "./DocumentDetailModal"; // Ensure this import is correct
+import DocumentDetailModal from "./DocumentDetailModel"; // Ensure this import is correct
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 

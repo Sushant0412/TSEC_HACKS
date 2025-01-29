@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApplicationAssistance from "../Pages/ApplicationAss";
-import BailEligibility from "../Pages/BailEligibility";
+import BailEligibility from "../Pages/BailEligibilty";
 import BailOptions from "../Pages/BailOptions";
 import CaseDetails from "../Pages/CaseDetails";
-import ChooseLawyer from "../Pages/ChooseALawyer";
+import ChooseLawyer from "../Pages/ChooseALwyer";
 import LegalResources from "../Pages/LegalResources";
 import NotificationCenter from "../Pages/Notifications";
 import ProfileBox from "./ProfileBox"; // Import ProfileBox
