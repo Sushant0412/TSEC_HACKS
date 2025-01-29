@@ -327,3 +327,105 @@ const CaseDetailModal = ({ caseItem, onClose }) => {
                 </li>)
               }
             </ul>
+            <p className="text-[#1E40AF] font-bold">Verdict: <span className="font-normal">{caseItem.verdict}</span></p>
+          </ul>
+        </div>
+        </div>
+        <div className="mb-6 flex gap-8">
+          <div className="flex-1">
+            <h4 className="text-xl font-semibold mb-2">Risk Analysis:</h4>
+            <div style={{ width: "80%", height: "auto" }}>
+              <Pie data={riskChartData} options={riskChartOptions} />
+            </div>
+          </div>
+          <div className="flex-1">
+            <h4 className="text-xl font-semibold mb-2">Case Timeline:</h4>
+            <div style={{ width: "80%", height: "auto" }}>
+              <Bar data={caseTimelineData} options={caseTimelineOptions} />
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 flex gap-8">
+          {/* Fine Calculation Box */}
+          <div className="flex-1 p-6 bg-gray-100 rounded-lg shadow-md">
+            <h4 className="text-xl font-semibold mb-4">Fine Calculation</h4>
+            <div className="flex flex-col gap-6">
+              {/* Button and Amount */}
+              <div>
+                <button
+                  className="[#2C88D3] px-6 py-3 rounded-lg shadow-lg text-lg font-semibold hover:bg-blue-600 transition-all duration-300"
+                  onClick={calculateFine}
+                >
+                  Calculate Fine
+                </button>
+                {isFineCalculated && (
+                  <h5 className="font-semibold mt-4 text-2xl text-blue-600">
+                    Total Fine: ₹{fineAmount.toLocaleString()}
+                  </h5>
+                )}
+              </div>
+
+              {/* Fine Breakdown and Factors */}
+              {isFineCalculated && (
+                <div>
+                  <h6 className="font-semibold mb-2">Fine Breakdown:</h6>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>
+                      Crime Severity Fine: ₹
+                      {fineBreakdown.crimeSeverity.toLocaleString()}
+                    </li>
+                    <li>
+                      Income Based Fine: ₹
+                      {fineBreakdown.incomeBased.toLocaleString()}
+                    </li>
+                    <li>
+                      Previous Fines: ₹
+                      {fineBreakdown.previousFines.toLocaleString()}
+                    </li>
+                  </ul>
+                  <h6 className="font-semibold mt-4">
+                    Fine Calculation Factors:
+                  </h6>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>
+                      <strong>Base Fine:</strong> ₹{baseFine.toLocaleString()}
+                    </li>
+                    <li>
+                      <strong>Income Based Fine:</strong> 10% of ₹
+                      {dummyCaseItem.details.income.toLocaleString()} = ₹
+                      {fineBreakdown.incomeBased.toLocaleString()}
+                    </li>
+                    <li>
+                      <strong>Previous Fines:</strong> ₹
+                      {previousFines.toLocaleString()}
+                    </li>
+                  </ul>
+                  {/* Documents Used for Fine Calculation */}
+                  <h6 className="font-semibold mt-4">
+                    Documents Used for Fine Calculation:
+                  </h6>
+                  <ul className="list-disc list-inside ml-1">
+                    {Object.entries({
+                      IncomeTaxReturns: documentLinks.incomeTaxReturns,
+                      SalarySlips: documentLinks.salarySlips,
+                    }).map(([docName, url]) => (
+                      <li
+                        key={docName}
+                        className="mb-2 flex items-center justify-between"
+                      >
+                        <span>{docName.replace(/([A-Z])/g, " $1").trim()}</span>
+                        <a
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-blue-500 text-[#1E40AF] px-3 py-1 rounded-lg text-sm hover:bg-blue-600 transition-all duration-300"
+                        >
+                          View File
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
