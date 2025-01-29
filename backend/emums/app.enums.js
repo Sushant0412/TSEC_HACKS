@@ -8,6 +8,7 @@ export const ApiStatusCodes = {
   INTERNAL_SERVER_ERROR: 500,
   USER_EXISTS:402
 };
+ 
 
 export const ResponseMessages = {
   OK: "OK",
