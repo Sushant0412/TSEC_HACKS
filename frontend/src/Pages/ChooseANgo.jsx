@@ -1,19 +1,33 @@
-import React, { useState } from "react";
-import ngo from "/data/ngo.json?url"; // Adjust the path if the JSON file is located elsewhere
+import React, { useState, useEffect } from "react";
 import { assets } from "../assets/assets.js";
+
 const ChooseNgo = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [ngos, setNgos] = useState([]); // State to store NGO data
 
-  // Function to handle the search input change
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-  // Filter lawyers based on the search term
+  // Fetch the JSON data when the component mounts
+  useEffect(() => {
+    const fetchNgos = async () => {
+      try {
+        const response = await fetch("/data/ngo.json"); // Adjust the path if necessary
+        const data = await response.json();
+        setNgos(data); // Set the NGO data into state
+      } catch (error) {
+        console.error("Error fetching NGO data:", error);
+      }
+    };
 
-  const filteredNGos = ngo.filter(
+    fetchNgos();
+  }, []);
+
+  // Filter NGOs based on the search term
+  const filteredNGos = ngos.filter(
     (ngo) =>
       ngo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      ngo.location.toLowerCase().includes(searchTerm.toLowerCase())
+      ngo.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      ngo.services.some((service) =>
+        service.toLowerCase().includes(searchTerm.toLowerCase())
+      )
   );
 
   const handleWhatsAppClick = (phoneNumber) => {
@@ -21,6 +35,7 @@ const ChooseNgo = () => {
     const whatsappUrl = `https://wa.me/${formattedNumber}`;
     window.open(whatsappUrl, "_blank");
   };
+
   return (
     <div className="bg-white border border-primary p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
       <h2 className="text-3xl font-bold text-primary mb-6">NGO</h2>
@@ -29,14 +44,14 @@ const ChooseNgo = () => {
       <div className="mb-6">
         <input
           type="text"
-          placeholder="Search by name or specialization or location..."
+          placeholder="Search by name, services, or location..."
           className="w-full p-3 border border-gray-300 rounded-lg  focus:outline-none focus:ring-2 focus:ring-primary"
           value={searchTerm}
-          onChange={handleSearchChange}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-      {/* Lawyer List */}
+      {/* NGO List */}
       <ul className="space-y-6">
         {filteredNGos.map((ngo, index) => (
           <li
@@ -47,10 +62,10 @@ const ChooseNgo = () => {
               <div>
                 <p className="text-xl font-semibold">{ngo.name}</p>
                 <p className="text-md text-gray-700">
-                  Location : {ngo.location}
+                  Location: {ngo.location}
                 </p>
                 <p className="text-md text-gray-700">
-                  Services: {ngo.services.map((service) => `${service} `)}
+                  Services: {ngo.services.join(", ")}
                 </p>
                 <p className="text-md text-gray-700">
                   Phone: {ngo.contact.phone}
@@ -67,10 +82,9 @@ const ChooseNgo = () => {
                   <img
                     className="cursor-pointer w-10 h-10 rounded-full border-4 border-gray-300 shadow-lg object-cover"
                     src={assets.wp}
-                    alt="Connect with Whatsapp"
-                    onClick={() => handleWhatsAppClick(lawyer.contact.phone)}
+                    alt="Connect with WhatsApp"
+                    onClick={() => handleWhatsAppClick(ngo.contact.phone)}
                   />
-                            
                 </div>
               </div>
             </div>
@@ -81,7 +95,7 @@ const ChooseNgo = () => {
       {/* No Results Found */}
       {filteredNGos.length === 0 && (
         <p className="text-md text-gray-500 mt-4">
-          No lawyers found matching your search criteria.
+          No NGOs found matching your search criteria.
         </p>
       )}
     </div>
