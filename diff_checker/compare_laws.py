@@ -1,7 +1,11 @@
-import cohere
+import requests
 import os
 
-co = cohere.Client("0jpjQvvrDH5hPjzSQvRGXopcQxW3r9xW2LvgvZ2t")
+# Gemini API configuration
+GEMINI_API_KEY = (
+    "AIzaSyD2jdpRYXWYRksDlbHg2fwd7UQLU3tOX-U"  # Replace with your Gemini API key
+)
+GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
 
 
 def read_file(file_path):
@@ -14,32 +18,39 @@ def read_file(file_path):
         return ""
 
 
-def send_to_cohere(ocr_text, laws_text):
-    """Send OCR text and laws to Cohere for comparison."""
+def send_to_gemini(ocr_text, laws_text):
+    """Send OCR text and laws to Gemini for comparison."""
     try:
+        headers = {
+            "Content-Type": "application/json",
+        }
+
         # Construct the prompt for the request
-        prompt = f"This is the bailing text: {ocr_text}\nThis is the laws: {laws_text}\ncheck for violations and summarize in 500 words the violations if it mostly/largely looks good just say All laws followed and say nothing else just say All Laws followed don’t give summary or conclusion."
+        prompt = f"This is the bailing text: {ocr_text}\nThis is the laws: {laws_text}\n check for violations and summarize in 500 words the violations if it mostly/largely looks good just say All laws followed and say nothing else just say All Laws followed don;t give summary or conclusion."
 
-        # Make the request to Cohere API
-        response = co.generate(
-            model="xlarge",  # Use appropriate Cohere model
-            prompt=prompt,
-            max_tokens=1000,  # Set an appropriate limit for the response
-            temperature=0.3,  # Use low temperature for deterministic output
-        )
+        # Send request to Gemini API
+        data = {"contents": [{"parts": [{"text": prompt}]}]}
 
-        # Get the response text
-        text_part = response.generations[0].text.strip()
+        response = requests.post(GEMINI_API_URL, headers=headers, json=data)
 
-        # Check if the response mentions "All laws followed"
-        if "all laws followed" in text_part.lower():
-            return "All laws followed"
+        if response.status_code == 200:
+            gemini_response = response.json()
+
+            # Extract the content text from the Gemini response
+            text_part = (
+                gemini_response.get("candidates", [{}])[0]
+                .get("content", {})
+                .get("parts", [{}])[0]
+                .get("text", "")
+            )
+            return f"Violation Summary:\n{text_part}..."  # Truncate for brevity (2-3 lines)
+
         else:
-            # Return the summarized violations or issues
-            return f"Violation Summary:\n{text_part[:500]}..."  # Truncate for brevity (2-3 lines)
+            # Handle error response from Gemini API
+            return f"Error: {response.status_code} - {response.text}"
 
     except Exception as e:
-        print(f"Error calling Cohere API: {e}")
+        print(f"Error calling Gemini API: {e}")
         return "Error during comparison."
 
 
@@ -48,25 +59,20 @@ def generate_report(ocr_text, law_files):
     # Read all laws into a single text
     laws_text = ""
     for law_file in law_files:
-        law_content = read_file(law_file)
-        if law_content:
-            laws_text += law_content + "\n"
-        else:
-            print(f"Warning: Unable to read {law_file}, skipping.")
+        laws_text += read_file(law_file) + "\n"
 
-    if not laws_text:
-        print("Error: No laws content to compare with.")
-        return
+    # Send OCR text and laws to Gemini for comparison
+    gemini_report = send_to_gemini(ocr_text, laws_text)
 
-    # Send OCR text and laws to Cohere for comparison
-    cohere_report = send_to_cohere(ocr_text, laws_text)
+    if gemini_report is None:
+        gemini_report = "Error: No report generated."  # Handle None case
 
     # Ensure output folder exists
     os.makedirs("output", exist_ok=True)
 
     # Write the result (whether laws are followed or violation summary) to the output file
     with open("output/violations_report.txt", "w") as report_file:
-        report_file.write(cohere_report)
+        report_file.write(gemini_report)
 
     print("Violations report generated: output/violations_report.txt")
 
@@ -79,9 +85,6 @@ def read_ocr_text(file_path):
 if __name__ == "__main__":
     # Read OCR text from the doc_comparison.txt file
     ocr_text = read_ocr_text("./output/doc_comparison.txt")
-    if not ocr_text:
-        print("Error: OCR text is empty or missing.")
-        exit()
 
     # Define law files to compare against
     law_files = [
