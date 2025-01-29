@@ -28,7 +28,7 @@ function ValidateDocument() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:4000/validate", {
+      const response = await fetch("http://localhost:5000/validate", {
         method: "POST",
         body: formData,
       });
@@ -36,9 +36,9 @@ function ValidateDocument() {
       const data = await response.json();
 
       if (response.ok) {
-        setApiOutput(data.message || "File validated successfully");
+        setApiOutput(data.violations_report || "File validated successfully");
       } else {
-        setApiOutput(`Error: ${data.error || "Something went wrong"}`);
+        setApiOutput(data.error || "Something went wrong");
       }
     } catch (err) {
       setError("Error in API call");
@@ -116,13 +116,12 @@ function ValidateDocument() {
         <h2 className="text-lg font-semibold mb-2 text-blue-600">
           Validation Result:
         </h2>
-        <textarea
-          value={apiOutput}
-          onChange={(e) => setApiOutput(e.target.value)}
-          rows="8"
+        <pre
           className="w-full p-4 bg-gray-100 border-2 border-gray-300 rounded-lg"
-          placeholder="API response will appear here"
-        />
+          style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
+        >
+          {apiOutput || "API response will appear here"}
+        </pre>
       </div>
     </div>
   );
