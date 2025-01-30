@@ -1,117 +1,132 @@
-Document: 2.pdf
+Document: doc1_bad.pdf
 Extracted Text:
-Bail Application 
-IN THE COURT OF ____________, ADDITIONAL DISTRICT AND SESSION JUDGE, _____________ 
-COURTS, ____________ 
-IN THE MATTER OF: 
-LMN, ___________, Son of _________________ Years of Age, Working as _____ Residing at 
-__________                   
-  ........... Petitioner 
-Versus 
-State of_________ Through PQR, Son of _________, ____ Years of age, Working as __________ 
-Residing at _______________       
- ...........Respondent 
-FIR No.: ___________ 
-U/s: ___________ 
-P.S.: ___________ 
-APPLICATION UNDER SECTION 439 OF THE CODE OF CRIMINAL PROCEDURE 1973 FOR GRANT 
-OF BAIL 
-Most Respectfully Show: 
-1. That the present application under section 439 of the Code of Criminal Procedure 1973 is being 
-filed by the Petitioner for seeking grant of bail in FIR No. _________ registered at Police 
-Station_______________. The present petition is being moved as the Petitioner has been 
-arrested on _________ (give date) in connection with the said FIR. The petitioner is now in 
-judicial/police custody. 
-2. That the Petitioner is innocent and is being falsely implicated in the above said case as he has 
-nothing to do with the matter. 
-3. That the Petitioner is a law abiding citizen of India. The petitioner is gainfully carrying on the 
-business of ________ at ________. (Give details). 
-4. That the Petitioner is a responsible person and is living at the above mentioned address. 
-5. (Give all other relevant facts, which have led to the arrest or which show the petitioner's 
-innocence or disassociation with the alleged offence supposed to have been committed) 
-6. That the Petitioner is innocent and no useful purpose would be served by keeping him under 
-custody and this is a fit case for grant of bail. (It would be pertinent to mention as to the stage of 
-investigation or in case the charge sheet has been filed, whether charges have been imposed, 
-evidence has started, the length of the list of witnesses cited by the prosecution etc. as these 
-would all be mitigating circumstances) 
-7. That the Petitioner undertakes to abide by the conditions that this Honorable Court may impose at 
-the time of granting bail to the Petitioner and further undertakes to attend the trial on every date of 
-hearing. 
-8. That the Petitioner has not filed any other similar petition before this or any other Honorable Court 
-for grant of bail in case of the present FIR. (Or give details and results of earlier applications) 
-PRAYER: 
-In view of the above stated facts and circumstances it is most respectfully prayed that this Honorable 
-Court may be pleased to 
-
-a. Grant bail to the Petitioner in connection with FIR No. ________ registered under section 
-________, for the offence of ________ (give sections) at Police Station _________ (give place). 
-b. Pass any other such order as this Honorable Court may deem fit and proper in the interest of 
-justice. 
-LMN........Petitioner 
-Through 
-ABC.........Counsel 
-Place: 
-Dated: 
-
-
-
-Applicable Laws:
-
---------------------------------------------------
-Document: doc1.pdf
-Extracted Text:
-Bail Application 
-IN THE COURT OF ____________, ADDITIONAL DISTRICT AND SESSION JUDGE, _____________ 
-COURTS, ____________ 
-IN THE MATTER OF: 
-LMN, ___________, Son of _________________ Years of Age, Working as _____ Residing at 
-__________                   
-  ........... Petitioner 
-Versus 
-State of_________ Through PQR, Son of _________, ____ Years of age, Working as __________ 
-Residing at _______________       
- ...........Respondent 
-FIR No.: ___________ 
-U/s: ___________ 
-P.S.: ___________ 
-APPLICATION UNDER SECTION 439 OF THE CODE OF CRIMINAL PROCEDURE 1973 FOR GRANT 
-OF BAIL 
-Most Respectfully Show: 
-1. That the present application under section 439 of the Code of Criminal Procedure 1973 is being 
-filed by the Petitioner for seeking grant of bail in FIR No. _________ registered at Police 
-Station_______________. The present petition is being moved as the Petitioner has been 
-arrested on _________ (give date) in connection with the said FIR. The petitioner is now in 
-judicial/police custody. 
-2. That the Petitioner is innocent and is being falsely implicated in the above said case as he has 
-nothing to do with the matter. 
-3. That the Petitioner is a law abiding citizen of India. The petitioner is gainfully carrying on the 
-business of ________ at ________. (Give details). 
-4. That the Petitioner is a responsible person and is living at the above mentioned address. 
-5. (Give all other relevant facts, which have led to the arrest or which show the petitioner's 
-innocence or disassociation with the alleged offence supposed to have been committed) 
-6. That the Petitioner is innocent and no useful purpose would be served by keeping him under 
-custody and this is a fit case for grant of bail. (It would be pertinent to mention as to the stage of 
-investigation or in case the charge sheet has been filed, whether charges have been imposed, 
-evidence has started, the length of the list of witnesses cited by the prosecution etc. as these 
-would all be mitigating circumstances) 
-7. That the Petitioner undertakes to abide by the conditions that this Honorable Court may impose at 
-the time of granting bail to the Petitioner and further undertakes to attend the trial on every date of 
-hearing. 
-8. That the Petitioner has not filed any other similar petition before this or any other Honorable Court 
-for grant of bail in case of the present FIR. (Or give details and results of earlier applications) 
-PRAYER: 
-In view of the above stated facts and circumstances it is most respectfully prayed that this Honorable 
-Court may be pleased to 
-
-a. Grant bail to the Petitioner in connection with FIR No. ________ registered under section 
-________, for the offence of ________ (give sections) at Police Station _________ (give place). 
-b. Pass any other such order as this Honorable Court may deem fit and proper in the interest of 
-justice. 
-LMN........Petitioner 
-Through 
-ABC.........Counsel 
-Place: 
-Dated: 
+SKILLS
+Vivekanand Education Society Institute of
+Technology
+PACE Junior Science College
+Created an e-commerce platform, collaborating remotely with a
+team across India, leading to an increase in search efficiency.
+Led the creation of product pages, implementing enhanced sorting
+and filtering features to optimize user experience.
+Automated processes using Core Java, reducing manual tasks by
+40%. Built web interfaces with HTML, CSS, and JavaScript,
+improving page load times by 25%.
+Integrated Stripe for secure payments, and handling transactions.
+Hosted the platform on Vercel, achieving 9% uptime.
+Tech stack: Next.js, Express.js, Node.js, MongoDB, Stripe.
+PROJECTS
+CampQuest - The Ultimate
+Camping Platform
+Udaan – NITS Hacks 7.0
+SUSHANT TULASI
+Web Developer
++91 9136591220
+tulasisushant04@gmail.com
+Mumbai, India
+Github
+EDUCATION
+B.Tech in Information Technology Hons. BlockChain
+09/2022 - 07/2026
+Mumbai, IN
+CGPA(Till Sem V)
+9.63
+Higher Secondary Education
+04/2020 - 04/2022
+Mumbai, IN
+Percentage
+83%
+EXPERIENCE
+Web Developer Intern
+TECHPLEMENT
+06/2025 - 07/2024
+Mumbai, IN
+Technical Officer
+ISTE-VESIT
+10/2023 - Present
+Mumbai, IN
+Guided and led workshops for students on web development, data
+structures, and game development, achieving a 95% satisfaction
+rate based on participant feedback. 
+Spearheaded the planning and execution of various technical events,
+including coding competitions and hackathons, which attracted over 200
+participants. 
+Improved event efficiency by 40% by integrating a streamlined registration
+process, and reduced registration time to 5 minutes per participant.
+Delivered speeches and presentations on various technical topics, fostering
+an engaging learning environment and increasing audience engagement by
+30% through interactive Q&A sessions.
+ACHIEVEMENTS & AWARDS
+INVICTUS ‘24 HACKATHON
+Finalist in the INVICTUS '24 Hackathon conducted by ISTE VESIT.
+VCODE ‘24
+Secured 5th rank out of 100 students in a DSA Coding Competition conducted
+by VESIT Training and Placement Cell on HackerRank Platform.
+NITSHACKS 7.0 HACKATHON
+Secured a top 3 rank in the Web3 track across India, competing among over
+1400+ teams, and won the award for best feasible solution.
+Technical Skills
+HTML, CSS, JavaScript, React, TailwindCSS,
+Node.js, ExpressJS, Django, Python, C++,
+Java, MySQL, MongoDB, Machine
+Learning, Version Control
+Soft Skills
+Communication, Teamwork, Time
+Management, Crowd Management,
+Perfectionist, Stewardship
+07/20204 - 11/2024
+Mumbai, IN
+Developed a comprehensive platform for
+campsite exploration that enables users to
+discover 
+locations 
+and 
+share 
+feedback
+through reviews.
+Implemented 
+user 
+authentication 
+and
+authorization 
+with 
+Passport.js. 
+Enabled
+CRUD operations and admin panel for
+campground reviews and feedback.
+Collaborated on continuous integration and
+version control using Git and GitHub. Added
+sorting functionality for reviews
+Integrated an analytics page for the admin,
+displaying 
+key 
+metrics, 
+Connected 
+the
+platform to Power BI for data visualization
+and report generation
+Tech stack: Express.js, Node.js, MongoDB, EJS.
+11/2024 - 11/2024
+Silchar, IN
+Developed a microloan blockchain solution using
+the MERN Stack, integrating secure KYC and
+decentralized credit systems.
+Designed and implemented multi-signature wallet
+mechanisms to enable community-driven financial
+decisions.
+Streamlined credit issuance processes through
+decentralized networks for enhanced efficiency.
+Achieved Top 3 recognition and awarded Best
+Feasible Project among 1400+ participants.
+LANGUAGES
+English
+Hindi
+Telegu
+Proficient
+Proficient
+Native
+Full Stack Web Development
+Blockchain & Web Development
+LinkedIn
 
 
 

@@ -15,7 +15,7 @@ const PrisonerFaceRecognition = () => {
 
           try {
             const response = await axios.post(
-              "http://localhost:3000/face/face-recogntion",
+              "http://localhost:3000/face/face-recognition",
               { latitude, longitude },
               {
                 withCredentials: true,

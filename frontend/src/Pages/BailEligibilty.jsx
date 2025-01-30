@@ -27,12 +27,22 @@ const BailEligibility = () => {
 
   return (
     <div>
-      <div className="bg-white border-2 border-primary p-4 rounded-lg shadow-md">
+      <br />
+      <BailPredictor />
+    </div>
+  );
+};
+
+export default BailEligibility;
+
+
+/*
+
+<div className="bg-white border-2 border-primary p-4 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold text-primary mb-4">
           Bail Eligibility Tracker
         </h2>
 
-        {/* Display bail eligibility status */}
         <p
           className={`text-lg ${
             daysRemaining === 0 ? "text-blue-500" : "text-red-500"
@@ -42,7 +52,7 @@ const BailEligibility = () => {
         </p>
 
         <div className="mt-4">
-          {/* Slider to show elapsed weeks */}
+          
           <div className="flex items-center mb-4">
             <FaLock className="text-gray-700 mr-2" size={24} />
             <input
@@ -67,7 +77,7 @@ const BailEligibility = () => {
             <FaHome className="text-gray-700 ml-2" size={24} />
           </div>
 
-          {/* Display of weeks/months remaining */}
+          
           <div className="text-center">
             <p className="text-lg text-gray-700 mb-2">
               {daysRemaining > 0
@@ -83,10 +93,4 @@ const BailEligibility = () => {
           </div>
         </div>
       </div>
-      <br />
-      <BailPredictor />
-    </div>
-  );
-};
-
-export default BailEligibility;
+*/
