@@ -3,8 +3,9 @@ import os
 
 # Gemini API configuration
 GEMINI_API_KEY = (
-    "AIzaSyB1s0qBzbGORa8i9NyjZ4kKAyjWlrpiipA"
-    # "AIzaSyDVc86TZN-4bJTKkzPnMZTYC97qKgba7SQ"  # Replace with your Gemini API key
+    # "AIzaSyB1s0qBzbGORa8i9NyjZ4kKAyjWlrpiipA"
+     "AIzaSyDVc86TZN-4bJTKkzPnMZTYC97qKgba7SQ" # Replace with your Gemini API key
+    # "AIzaSyDjh8jprEF4007khjIsPS28_MJHy_Ccyq4"
 )
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
 

@@ -5,7 +5,7 @@ export async function generateAndDownloadPdf() {
   try {
     const apiKey = "your-api-key";
     const response = await axios.post(
-      "http://192.168.29.168:3001/pdf/generate",
+      "http://192.168.83.140:3001/pdf/generate",
       {
         project_name: "bailReckoner",
         design_file: "bailAppication.ejs",

@@ -64,7 +64,7 @@ const DocGen = () => {
 
     try {
       const response = await axios.post(
-        "http://192.168.32.251:3001/pdf/generate",
+        "http://192.168.83.140:3001/pdf/generate",
         requestData,
         { responseType: "blob" } // Ensure the response is handled as a Blob
       );
