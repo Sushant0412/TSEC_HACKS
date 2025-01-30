@@ -7,7 +7,9 @@ const JudgeSidebar = () => {
       style={{ backgroundColor: "#03346E" }}
       className="w-64 h-full text-white"
     >
-      <div className="p-4 text-2xl font-bold">Judge Dashboard</div>
+      <div className="p-4 text-2xl font-bold">
+        <a href="/">Judge Dashboard</a>
+      </div>
       <ul className="mt-6">
         <li className="p-4 hover:bg-gray-200 hover:text-blue-900 cursor-pointer rounded transition-colors duration-300">
           <NavLink

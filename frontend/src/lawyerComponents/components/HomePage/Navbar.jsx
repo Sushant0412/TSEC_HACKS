@@ -24,7 +24,7 @@ const Navbar = () => {
 
           <div className=" flex gap-4">
             <div className=" border-black  p-3 px-6 rounded-lg  ">
-              <h1 className=" font-bold text-3xl  font-serif">Nyaya Saathi</h1>
+              <h1 className=" font-bold text-3xl  font-serif">न्याय Saathi</h1>
             </div>
 
             {/* Authentication Buttons */}

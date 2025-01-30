@@ -68,7 +68,7 @@ const JudgeDashboard = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Judge Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-6"><a href="/">Judge Dashboard</a></h1>
 
       {/* Dropdown to select a hearing */}
       <Dropdown

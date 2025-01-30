@@ -62,7 +62,7 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
       className="w-64 h-screen text-white lg:fixed lg:top-0 lg:left-0 lg:h-screen"
     >
       <div className="p-4 text-2xl font-bold text-left">
-        Undertrial Dashboard
+        <a href="/">Undertrial Dashboard</a>
       </div>
       <ul className="mt-2 space-y-4">
         {items.map((item) => (
