@@ -39,7 +39,7 @@ const BailBuddy = () => {
         >
           {/* <a href="https://github.com/Vishesh-Pandey/chat-ai" target="_blank" rel="noopener noreferrer"> */}
           <h1 className="text-4xl font-bold text-primary mb-4 animate-bounce">
-            BailBuddy
+            Legal-Assistance
           </h1>
           {/* </a> */}
           <textarea
@@ -51,7 +51,7 @@ const BailBuddy = () => {
           ></textarea>
           <button
             type="submit"
-            className={`bg-primary text-white p-3 rounded-md hover:bg-blue-900 transition-all duration-300 ${
+            className={`bg-blue-600 text-white p-3 rounded-md hover:bg-blue-900 transition-all duration-300 ${
               generatingAnswer ? "opacity-50 cursor-not-allowed" : ""
             }`}
             disabled={generatingAnswer}

@@ -35,31 +35,33 @@ const BailBuddy = () => {
       <div className="bg-gradient-to-r   from-blue-50 to-blue-100 h-screen px-10 flex flex-col justify-center items-center overflow-auto">
         <form
           onSubmit={generateAnswer}
-          className="w-full lg:w-3/3 xl:w-2/2 text-center rounded-lg shadow-lg bg-white py-6 px-4 transition-all duration-500 transform hover:scale-105"
+          className="w-full lg:w-3/3 xl:w-2/2 text-center rounded-lg shadow-lg py-6 px-4 transition-all duration-500 transform hover:scale-105"
         >
           {/* <a href="https://github.com/Vishesh-Pandey/chat-ai" target="_blank" rel="noopener noreferrer"> */}
           <h1 className="text-4xl font-bold text-primary mb-4 animate-bounce">
-            BailBuddy
+            Legal-Assistance
           </h1>
           {/* </a> */}
           <textarea
             required
-            className="border border-gray-300 rounded w-full my-2 min-h-fit p-3 transition-all duration-300 focus:border-blue-400 focus:shadow-lg"
+            className="border rounded w-full my-2 min-h-fit p-3 transition-all duration-300 focus:border-blue-400 focus:shadow-lg"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder="Ask a question related to law"
           ></textarea>
           <button
             type="submit"
-            className={`bg-primary text-white p-3 rounded-md hover:bg-blue-900 transition-all duration-300 ${
-              generatingAnswer ? "opacity-50 cursor-not-allowed" : ""
+            className={`text-black bg-blue-600 p-3 rounded-md transition-all duration-300 ${
+              generatingAnswer
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-blue-700"
             }`}
             disabled={generatingAnswer}
           >
             Generate answer
           </button>
         </form>
-        <div className="w-full lg:w-3/3 xl:w-2/2 rounded-lg bg-white my-4 shadow-lg transition-all duration-500 transform hover:scale-105 overflow-auto">
+        <div className="w-full lg:w-3/3 xl:w-2/2 rounded-lg  my-4 shadow-lg transition-all duration-500 transform hover:scale-105 overflow-auto">
           <ReactMarkdown className="p-6">{answer}</ReactMarkdown>
         </div>
       </div>

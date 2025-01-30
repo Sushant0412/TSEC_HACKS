@@ -1,132 +1,67 @@
-Document: doc1_bad.pdf
+Document: Bad_Clause.pdf
 Extracted Text:
-SKILLS
-Vivekanand Education Society Institute of
-Technology
-PACE Junior Science College
-Created an e-commerce platform, collaborating remotely with a
-team across India, leading to an increase in search efficiency.
-Led the creation of product pages, implementing enhanced sorting
-and filtering features to optimize user experience.
-Automated processes using Core Java, reducing manual tasks by
-40%. Built web interfaces with HTML, CSS, and JavaScript,
-improving page load times by 25%.
-Integrated Stripe for secure payments, and handling transactions.
-Hosted the platform on Vercel, achieving 9% uptime.
-Tech stack: Next.js, Express.js, Node.js, MongoDB, Stripe.
-PROJECTS
-CampQuest - The Ultimate
-Camping Platform
-Udaan – NITS Hacks 7.0
-SUSHANT TULASI
-Web Developer
-+91 9136591220
-tulasisushant04@gmail.com
-Mumbai, India
-Github
-EDUCATION
-B.Tech in Information Technology Hons. BlockChain
-09/2022 - 07/2026
-Mumbai, IN
-CGPA(Till Sem V)
-9.63
-Higher Secondary Education
-04/2020 - 04/2022
-Mumbai, IN
-Percentage
-83%
-EXPERIENCE
-Web Developer Intern
-TECHPLEMENT
-06/2025 - 07/2024
-Mumbai, IN
-Technical Officer
-ISTE-VESIT
-10/2023 - Present
-Mumbai, IN
-Guided and led workshops for students on web development, data
-structures, and game development, achieving a 95% satisfaction
-rate based on participant feedback. 
-Spearheaded the planning and execution of various technical events,
-including coding competitions and hackathons, which attracted over 200
-participants. 
-Improved event efficiency by 40% by integrating a streamlined registration
-process, and reduced registration time to 5 minutes per participant.
-Delivered speeches and presentations on various technical topics, fostering
-an engaging learning environment and increasing audience engagement by
-30% through interactive Q&A sessions.
-ACHIEVEMENTS & AWARDS
-INVICTUS ‘24 HACKATHON
-Finalist in the INVICTUS '24 Hackathon conducted by ISTE VESIT.
-VCODE ‘24
-Secured 5th rank out of 100 students in a DSA Coding Competition conducted
-by VESIT Training and Placement Cell on HackerRank Platform.
-NITSHACKS 7.0 HACKATHON
-Secured a top 3 rank in the Web3 track across India, competing among over
-1400+ teams, and won the award for best feasible solution.
-Technical Skills
-HTML, CSS, JavaScript, React, TailwindCSS,
-Node.js, ExpressJS, Django, Python, C++,
-Java, MySQL, MongoDB, Machine
-Learning, Version Control
-Soft Skills
-Communication, Teamwork, Time
-Management, Crowd Management,
-Perfectionist, Stewardship
-07/20204 - 11/2024
-Mumbai, IN
-Developed a comprehensive platform for
-campsite exploration that enables users to
-discover 
-locations 
-and 
-share 
-feedback
-through reviews.
-Implemented 
-user 
-authentication 
-and
-authorization 
-with 
-Passport.js. 
-Enabled
-CRUD operations and admin panel for
-campground reviews and feedback.
-Collaborated on continuous integration and
-version control using Git and GitHub. Added
-sorting functionality for reviews
-Integrated an analytics page for the admin,
-displaying 
-key 
-metrics, 
-Connected 
-the
-platform to Power BI for data visualization
-and report generation
-Tech stack: Express.js, Node.js, MongoDB, EJS.
-11/2024 - 11/2024
-Silchar, IN
-Developed a microloan blockchain solution using
-the MERN Stack, integrating secure KYC and
-decentralized credit systems.
-Designed and implemented multi-signature wallet
-mechanisms to enable community-driven financial
-decisions.
-Streamlined credit issuance processes through
-decentralized networks for enhanced efficiency.
-Achieved Top 3 recognition and awarded Best
-Feasible Project among 1400+ participants.
-LANGUAGES
-English
-Hindi
-Telegu
-Proficient
-Proficient
-Native
-Full Stack Web Development
-Blockchain & Web Development
-LinkedIn
+Unsafe Legal Clauses That Should Not Be Fed to AI Models 
+1. Vague and Ambiguous Terms 
+●​ Clause: "The party shall act in good faith and adhere to the best practices in all matters." 
+●​ Why Unsafe: The phrase "good faith" and "best practices" are undefined and subject 
+to interpretation, making it impossible for an AI model to predict legal outcomes 
+accurately. 
+2. Unfair Indemnification Clauses 
+●​ Clause: "The contractor shall indemnify and hold harmless the company from any and 
+all claims, regardless of the cause." 
+●​ Why Unsafe: This creates unlimited liability for the contractor, which is unfair and 
+legally unsound. AI models trained on such clauses may overestimate liability risks in 
+contracts. 
+3. Excessive Penalties and Unenforceable Fines 
+●​ Clause: "If the employee resigns within 12 months, they shall pay a penalty equal to six 
+months' salary." 
+●​ Why Unsafe: Such clauses may be considered unconscionable and violate labor laws, 
+leading to incorrect AI-based legal advice. 
+4. Unreasonable Non-Compete Agreements 
+●​ Clause: "The employee agrees not to work in any industry-related field anywhere in the 
+world for ten years after leaving the company." 
+●​ Why Unsafe: AI models trained on such clauses might incorrectly assume all 
+non-compete agreements are valid, even when they are legally unenforceable due 
+to unreasonable restrictions. 
+5. Privacy Violations 
+●​ Clause: "The company reserves the right to access and monitor all personal 
+communications of the employee." 
+●​ Why Unsafe: This contradicts privacy laws such as GDPR and may lead AI models to 
+misinterpret legal boundaries of employee monitoring. 
+6. Bias-Encouraging Risk Assessment Clauses 
+●​ Clause: "Decisions regarding eligibility shall be determined at the sole discretion of the 
+company, taking into account historical risk factors." 
+
+●​ Why Unsafe: If an AI model is trained on such clauses, it may reinforce biases based 
+on historical data that discriminate against specific groups. 
+7. Overly Broad Arbitration Clauses 
+●​ Clause: "All disputes, including those arising from criminal conduct, shall be settled 
+through arbitration." 
+●​ Why Unsafe: Criminal matters must be handled by courts, not arbitration. AI trained 
+on such clauses might erroneously recommend arbitration for all disputes. 
+8. Unclear Termination Conditions 
+●​ Clause: "The company may terminate the agreement if the employee does not meet 
+expected performance." 
+●​ Why Unsafe: The term "expected performance" is not defined, leading to subjective 
+enforcement that AI models cannot fairly interpret. 
+9. One-Sided Confidentiality Agreements 
+●​ Clause: "The employee shall never disclose any information about the company, but the 
+company has the right to disclose any employee-related information as deemed 
+necessary." 
+●​ Why Unsafe: This lacks mutuality and could lead AI to incorrectly assess fairness in 
+confidentiality agreements. 
+10. Blanket Waivers of Liability 
+●​ Clause: "The customer waives all rights to sue the company under any circumstances, 
+even in cases of gross negligence or fraud." 
+●​ Why Unsafe: Such clauses are unenforceable in many jurisdictions and may cause 
+AI models to incorrectly assume that waivers of liability are always valid. 
+ 
+Conclusion 
+Feeding such legally flawed, unfair, or ambiguous clauses into an AI model can result in 
+biased legal interpretations, invalid contract generation, and incorrect legal risk 
+assessments. It is essential to filter out such problematic clauses before training AI models for 
+legal applications. 
+ 
 
 
 

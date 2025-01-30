@@ -9,7 +9,8 @@ const __dirname = path.resolve();
 
 export const faceRecognition = async (req, res) => {
   try {
-    const { userId, email_id } = req.user;
+    const userId = "66d2a361fd3c180314076200";
+    const email_id = "rahul.sharma@example.com";
     const { latitude, longitude } = req.body; // Get location from the request body
 
     if (!latitude || !longitude) {
@@ -25,7 +26,8 @@ export const faceRecognition = async (req, res) => {
 
     console.log("Received request for user:", userId);
 
-    const batchFilePath = "D:/TSEC_HACKS/Face_Recognition/runPythonScript.bat";
+    const batchFilePath =
+      "D:/TSEC_HACKS/Face Recognition Model/runPythonScript.bat";
     console.log("Batch file path:", batchFilePath);
 
     const executePythonScript = () => {

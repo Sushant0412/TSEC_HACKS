@@ -19,7 +19,7 @@ const Sidebar = ({ handleNavigation, activeComponent }) => {
     //   icon: <FaFileContract />,
     // },
     { label: "Case Details", value: "CaseDetails", icon: <FaFileAlt /> },
-    { label: "BailBuddy", value: "BailBuddy", icon: <FaUserTie /> },
+    { label: "Legal-Assistance", value: "BailBuddy", icon: <FaUserTie /> },
     {
       label: "Legal Document Assessment",
       value: "DocGen",

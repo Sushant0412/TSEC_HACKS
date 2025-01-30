@@ -10,6 +10,12 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from werkzeug.utils import secure_filename
 import subprocess
+import os
+import shutil
+import subprocess
+import torch
+from flask import Flask, request, jsonify
+from werkzeug.utils import secure_filename
 
 load_dotenv()
 
@@ -151,14 +157,7 @@ def generate_suggestions(text):
     return suggestions
 
 
-import os
-import shutil
-import subprocess
-import torch
-from flask import Flask, request, jsonify
-from werkzeug.utils import secure_filename
-
-app = Flask(__name__)
+# app = Flask(__name__)
 
 # Define allowed file extensions for the upload
 ALLOWED_EXTENSIONS = {"pdf", "docx"}
@@ -229,8 +228,9 @@ def bert_predict():
 
             probabilities = torch.nn.functional.softmax(logits, dim=-1)
             predicted_class = torch.argmax(probabilities, dim=-1).item()
+            print(probabilities)
 
-            classification = "Legally Risky" if predicted_class == 1 else "Legally Safe"
+            classification = "Legally Risky" if predicted_class != 1 else "Legally Safe"
 
             suggestions = []
             if classification == "Legally Risky":
